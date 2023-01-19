@@ -12,7 +12,8 @@
 
             Console.WriteLine("Select Proper Option\n" +
                 "1)Get the Frequency of Words to be used\n" +
-                "2)Get the Frequency of Phrase from the Paragraph\n");
+                "2)Get the Frequency of Phrase from the Paragraph\n" +
+                "3)Removed Avoidable word from the Paragraph\n");
 
             int option = Convert.ToInt32(Console.ReadLine());
 
@@ -55,6 +56,28 @@
                     }
 
                     break;
+
+                case 3:
+
+
+                    MyMapNode<string, string> hash2 = new MyMapNode<string, string>(20);
+
+                    String sentence1 = "Paranoids are not paranoid because they are paranoid but because they keep putting themselves deliberately into paranoid avoidable situations";
+
+                    string[] Phrase1 = sentence1.Split(' ');
+
+                    int SLength1 = Phrase1.Length;
+                    // Itreating along each word and adding it to hash set
+                    for (int i = 0; i < SLength1; i++)
+                    {
+                        hash2.Add(Convert.ToString(i), Phrase1[i]);
+                    }
+                    Console.WriteLine(" Now 'avoidable' word removing from the hash table ");
+
+                    hash2.Remove("avoidable");
+                    Console.WriteLine("Frequency of 'avoidable' after removal is :" + hash2.GetFrequency("avoidable"));
+                    break;
+
 
 
                 default:
